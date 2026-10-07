@@ -1,10 +1,9 @@
-*~
-plan/
-/target
-/dist
-/corpus
-/log
+target/
+Cargo.lock
+**/*.rs.bk
+*.swp
 .DS_Store
-/.claude/
-/target-*/
-/craft-fonts/
+
+# Demonstration artifacts
+/brag/
+brag/
