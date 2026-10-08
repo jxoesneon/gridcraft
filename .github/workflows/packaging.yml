@@ -24,8 +24,7 @@ jobs:
           python3 flatpak-cargo-generator.py Cargo.lock -o packaging/flatpak/cargo-sources.json
 
       - name: Build Flatpak
-        uses: flatpak/flatpak-github-actions/flatpak-builder@v6
-        with:
-          bundle: org.artcraft.app.flatpak
-          manifest-path: packaging/flatpak/org.artcraft.app.yml
-          cache-key: flatpak-builder-${{ github.sha }}
+        run: |
+          flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+          flatpak-builder --user --install-deps-from=flathub --force-clean build-dir packaging/flatpak/org.artcraft.app.yml
+          flatpak build-bundle build-dir org.artcraft.app.flatpak org.artcraft.app
