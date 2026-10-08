@@ -26,5 +26,5 @@ jobs:
       - name: Build Flatpak
         run: |
           flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          flatpak-builder --user --install-deps-from=flathub --force-clean build-dir packaging/flatpak/org.artcraft.app.yml
-          flatpak build-bundle build-dir org.artcraft.app.flatpak org.artcraft.app
+          flatpak-builder --user --repo=repo --install-deps-from=flathub --force-clean build-dir packaging/flatpak/org.artcraft.app.yml
+          flatpak build-bundle repo org.artcraft.app.flatpak org.artcraft.app
