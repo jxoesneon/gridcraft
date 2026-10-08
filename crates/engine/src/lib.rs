@@ -51,6 +51,30 @@ pub enum EngineError {
 
 pub type Result<T> = std::result::Result<T, EngineError>;
 
+/// The application engine: workbooks, commands, history and selection state.
+/// Named `Engine` so UIs (egui, Martensite, headless) refer to one type.
+pub type Engine = Session;
+
+/// Toolbox tool identity, in spreadsheet order. UI-agnostic so every front-end
+/// shares the canonical list; each UI maps it to its own presentation.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Tool {
+    /// Range selection: the default grid tool.
+    Select,
+    /// In-cell editing (F2 or double-click).
+    EditCell,
+    /// Fill-handle drag: copy/extend a series across a range.
+    Fill,
+    /// Format painter: apply copied formatting.
+    Format,
+    /// Placement mode for inserted objects (charts, shapes, images).
+    Insert,
+    /// Scroll/pan the sheet by dragging.
+    Hand,
+    /// Click to zoom in / Alt+click to zoom out.
+    Zoom,
+}
+
 #[derive(Clone, Debug)]
 pub struct HistoryEntry {
     pub label: String,

@@ -6,6 +6,9 @@ license.workspace = true
 description = "Sovereign retained-mode spreadsheet user interface for GridCraft powered by Martensite"
 
 [dependencies]
+gridcraft-engine = { workspace = true }
+gridcraft-core = { workspace = true }
+
 serde = { workspace = true, features = ["derive"] }
 serde_json.workspace = true
 tracing.workspace = true
