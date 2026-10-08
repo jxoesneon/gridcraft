@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install flatpak-builder
+        run: sudo apt-get update && sudo apt-get install -y flatpak flatpak-builder
+
       - name: Generate cargo sources
         run: |
           pip3 install aiohttp tomlkit
